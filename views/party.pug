@@ -1,0 +1,24 @@
+include ./partials/header.pug
+h1 Qui prend quoi ?
+h2 Page événement
+
+h2= party.name
+h3 Créé par #{party.author}
+
+label(for="url") Partagez l'événement
+input(id="url" value=`${url}`)
+
+h3 Liste des éléments
+ul
+    each item in party.items
+        li #{item.name}
+            a(href=`/party/${party._id}/element/${item._id}/delete`) supprimer
+
+h3 Ajouter un élément
+form(method="post" action=`${postRoute}`)
+    div
+        label(for="name") Nom de l'élément
+        input(name="name" id="name" required placeholder="Bière")
+
+        input(name="user" id="user" required value="Romain" hidden=true)
+    button(type="submit") Créer
