@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently --kill-others \"npm run sass\" \"npm run watchify\" \"nodemon app.js\"",
+    "start": "concurrently --kill-others \"npm run sass\" \"npm run watchify\" \"npm run watchify2\" \"nodemon app.js\"",
     "sass": "node-sass styles/style.scss public/style.css -w --output-style compressed",
-    "watchify": "watchify scripts/clipboard.js -o public/script.js -t [ babelify --presets [ @babel/preset-env babel-preset-minify ] ]"
+    "watchify": "watchify scripts/clipboard.js -o public/script.js -t [ babelify --presets [ @babel/preset-env babel-preset-minify ] ]",
+    "watchify2": "watchify scripts/share.js -o public/script.js -t [ babelify --presets [ @babel/preset-env babel-preset-minify ] ]"
   },
   "keywords": [],
   "author": "",

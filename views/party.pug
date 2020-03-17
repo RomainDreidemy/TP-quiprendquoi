@@ -6,7 +6,7 @@ h3 Créé par #{party.author}
 
 div
     label(for="url") Partagez l'événement
-    input(id="url" value=`${url}` data-clipboard=`${url}`)
+    input(id="url" value=`${url}` data-clipboard=`${url}` data-share-url=`${url}` data-share-title=`${party.name}` data-share-text=`${party.author} vous invite a rejoindre l'évènement ${party.name}`)
 
 h3 Liste des éléments
 table
