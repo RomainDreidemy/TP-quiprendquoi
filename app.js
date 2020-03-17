@@ -4,6 +4,7 @@ const dotenv = require('dotenv').config();
 const port = process.env.PORT;
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const watchify = require('watchify');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
