@@ -33,9 +33,7 @@ app.get('/party/:id', (req, res) => {
                     postRoute: `/party/${data._id}/element`,
                     deleteElementRoute: `/party/${data._id}/element/delete`
                 })
-        }
-
-        )
+        })
         .catch((err) => console.log(err));
 });
 

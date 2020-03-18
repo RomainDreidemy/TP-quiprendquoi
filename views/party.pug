@@ -1,31 +1,37 @@
 include ./partials/header.pug
-h1 Qui prend quoi ?
 
-h2= party.name
-h3 Créé par #{party.author}
+body
+    div.container
+        h1 Qui prend quoi ?
 
-div
-    label(for="url") Partagez l'événement
-    input(id="url" value=`${url}` data-clipboard=`${url}` data-share-url=`${url}` data-share-title=`${party.name}` data-share-text=`${party.author} vous invite a rejoindre l'évènement ${party.name}`)
+        hr
 
-h3 Liste des éléments
-table
-    thead
-        tr
-            th Element
-            th Action
-    tbody
-        each item in party.items
-            tr
-                td #{item.name}
-                td
-                    a(href=`/party/${party._id}/element/${item._id}/delete`) supprimer
+        h2= party.name
+        p Créé par #{party.author}
 
-h3 Ajouter un élément
-form(method="post" action=`${postRoute}`)
-    div
-        label(for="name") Nom de l'élément
-        input(name="name" id="name" required placeholder="Bière")
 
-        input(name="user" id="user" required value="Romain" hidden=true)
-    button(type="submit") Créer
+        h3 Liste des éléments
+        table
+            thead
+            tbody
+                each item in party.items
+                    tr
+                        td #{item.name} - #{item.user}
+                        td
+                            a(href=`/party/${party._id}/element/${item._id}/delete`)
+                                i.fas.fa-trash
+
+        h3 Ajouter un élément
+        form(method="post" action=`${postRoute}`)
+            div
+                label(for="name") Nom de l'élément
+                input(name="name" id="name" required placeholder="Bière")
+
+                input(name="user" id="user" required value="Romain" hidden=true)
+                button.btn.btn-success(type="submit") Ajouter
+
+        hr
+        div
+            label(for="url") Partagez l'événement
+            br
+            input(id="url" value=`${url}` data-clipboard=`${url}` data-share-url=`${url}` data-share-title=`${party.name}` data-share-text=`${party.author} vous invite a rejoindre l'évènement ${party.name}`)
