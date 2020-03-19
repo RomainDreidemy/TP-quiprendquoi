@@ -8,6 +8,7 @@ const watchify = require('watchify');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(express.static('pwa'));
 
 app.get('/', function(req, res) {
     res.render('index', {title: 'Home'})
