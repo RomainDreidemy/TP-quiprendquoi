@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently --kill-others \"npm run sass\" \"npm run watchify\" \"nodemon app.js\" \"npm run sw\"",
-    "watchify": "watchify scripts/clipboard.js scripts/share.js scripts/parties.js scripts/partyList.js -o public/script.js -t [ babelify --presets [ @babel/preset-env babel-preset-minify ] ]",
+    "watchify": "watchify scripts/push.js scripts/clipboard.js scripts/share.js scripts/parties.js scripts/partyList.js -o public/script.js -t [ babelify --presets [ @babel/preset-env babel-preset-minify ] ]",
     "sass": "node-sass styles/style.scss public/style.css -w --output-style compressed",
     "sw": "watchify sw.js -o public/sw.js -t [ babelify --presets [ babel-preset-minify ] ]"
   },
