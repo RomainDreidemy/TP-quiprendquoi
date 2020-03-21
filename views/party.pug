@@ -43,4 +43,4 @@ body
             input(id="url" value=`${url}` data-clipboard=`${url}` data-share-url=`${url}` data-share-title=`${party.name}` data-share-text=`${party.author} vous invite a rejoindre l'évènement ${party.name}`)
 
         div
-            a.btn.btn-success(href=`https://www.google.com/calendar/render?action=TEMPLATE&text=${party.name}&details=Qui%20prend%20Quoi?&dates=${date}T000000Z/${date}T000000Z`) Ajouter au calendrier
+            a.btn.btn-success(href=`https://www.google.com/calendar/render?action=TEMPLATE&text=${party.name}&details=Qui%20prend%20Quoi?&date=${date}T000000Z`) Ajouter au calendrier
