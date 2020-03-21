@@ -1,9 +1,8 @@
-self.addEventListener('install', (event) => {
-    console.log('Hello from the service worker')
+addEventListener('install', (event) => {
     event.waitUntil(
         caches.open('offline').then((cache) => {
             cache.add('offline.html');
-        })
+        }),
     );
 });
 
@@ -26,11 +25,21 @@ addEventListener('fetch', (event) => {
                     if (isPartyPage(event.request.url)) {
                         return caches
                             .match(event.request)
-                            .catch((err) => caches.match('offline.html'));
+                            .catch(() => caches.match('offline.html'));
                     } else {
                         return caches.match('offline.html');
                     }
+                }),
+        );
+    } else {
+        event.respondWith(
+            fetch(event.request)
+                .then((res) => {
+                    const copy = res.clone();
+                    caches.open('static').then((cache) => cache.put(event.request, copy));
+                    return res;
                 })
+                .catch(() => caches.match(event.request)),
         );
     }
 });
@@ -38,4 +47,3 @@ addEventListener('fetch', (event) => {
 function isPartyPage(url) {
     return /party\/[a-zA-Z0-9]*$/.test(url);
 }
-

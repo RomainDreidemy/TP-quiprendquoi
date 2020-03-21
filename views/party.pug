@@ -1,4 +1,10 @@
 include ./partials/header.pug
+script.
+    party = !{JSON.stringify(party)}
+    console.log(party)
+    let dateTest = new Date(party.date);
+    let dateString = `${dateTest.getFullYear()}${dateTest.getMonth() + 1}${dateTest.getDate()}`
+    console.log(dateString);
 
 body
     div.container
@@ -35,3 +41,6 @@ body
             label(for="url") Partagez l'événement
             br
             input(id="url" value=`${url}` data-clipboard=`${url}` data-share-url=`${url}` data-share-title=`${party.name}` data-share-text=`${party.author} vous invite a rejoindre l'évènement ${party.name}`)
+
+        div
+            a.btn.btn-success(href=`https://www.google.com/calendar/render?action=TEMPLATE&text=${party.name}&details=Qui%20prend%20Quoi?&dates=${date}T000000Z/${date}T000000Z`) Ajouter au calendrier

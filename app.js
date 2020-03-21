@@ -5,6 +5,7 @@ const port = process.env.PORT;
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const watchify = require('watchify');
+const moment = require('moment');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -27,8 +28,16 @@ app.get('/party/:id', (req, res) => {
         .get(`${process.env.API_URL}/party/${req.params.id}`)
         .then(({ data }) => {
                 console.log(data);
+                let dateDegueu = new Date(data.date);
+                let annee = dateDegueu.getFullYear();
+                let month = dateDegueu.getMonth() + 1;
+                let day = dateDegueu.getDate();
+                if(month.toString().length == 1){month = `0${month}`}
+                if(day.toString().length == 1){day = `0${month}`}
+                let date = `${annee}${month}${day}`;
                 res.render('party', {
                     party: data,
+                    date: date,
                     title: data.name,
                     url: `${process.env.FRONT_URL}:${process.env.PORT}/party/${data._id}`,
                     postRoute: `/party/${data._id}/element`,
