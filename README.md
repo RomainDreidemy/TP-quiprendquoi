@@ -41,9 +41,9 @@ Plan en cas de panne d'inspiration :
 
 ___
 
-L' API Push donne aux applications web la possibilité de recevoir des messages qui leur sont poussés depuis un serveur, qu'il s'agisse ou non d'une application active au premier plan, ou même actuellement chargée, sur un agent utilisateur. Ceci permet aux développeurs de délivrer des notifications asynchrones.
+L'API Push permet aux applications web (PWA) la possibilité de recevoir des notifications envoyé depuis un server, que l'application soit au premier plan ou non. Elle permet aux développeur de créer des notifications en asynchrone.
 
 On peut utiliser cette API lorsqu'un utilisateur ajoute un item dans un événement.
 
-L'avantage de cette API c'est que ça permet une relation continu avec l'utilisateur et le faire revenir sur l'application si il l'avait quitté.
-L'inconvénient c'est quelle n'est pas facile à mettre en place et n'est pas compatible avec beaucoup de navigateur.
+- L'avantage de cette API c'est que ça permet une relation continu avec l'utilisateur et le faire revenir sur l'application si il l'avait quitté.
+- L'inconvénient c'est quelle n'est pas facile à mettre en place et n'est pas compatible avec beaucoup de navigateur.
