@@ -51,16 +51,16 @@ app.post('/party/:id/element', (req, res) => {
     axios
         .post(`${process.env.API_URL}/party/${req.params.id}/items`, req.body)
         .then(({data}) => {
-            if (window.Notification && Notification.permission === "granted") {
-                alert("Début notification");
-                let n = new Notification("Qui prend quoi ?", {
-                    body: `${data.user} à ajouté "${data.name} à un événement"`
-                });
-                n.onclick = function () {
-                    window.open(`localhost:3000/party/${req.params.id}`, '_blank');
-                };
-                alert("Fin notification");
-            }
+            // if (window.Notification && Notification.permission === "granted") {
+            //     alert("Début notification");
+            //     let n = new Notification("Qui prend quoi ?", {
+            //         body: `${data.user} à ajouté "${data.name} à un événement"`
+            //     });
+            //     n.onclick = function () {
+            //         window.open(`localhost:3000/party/${req.params.id}`, '_blank');
+            //     };
+            //     alert("Fin notification");
+            // }
 
             res.redirect(`/party/${req.params.id}`)
         })

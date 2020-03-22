@@ -4,11 +4,44 @@
 
 body {
   font-family: 'Sen', sans-serif;
+  background: #A9CDDB;
+
+  header{
+    padding: 5px;
+    background: #8e9190;
+    text-transform: uppercase;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    a{
+      display: flex;
+      align-items: center;
+      color: #fff;
+
+      div#logo{
+        height: 50px;
+        margin-right: 10px;
+        img{
+          height: 100%;
+        }
+      }
+    }
+
+  }
+
   .container{
+    margin: 60px auto 0 auto;
     width: 100%;
     padding: 15px;
-    background: #eeeddd;
-    min-height: 100vh;
+    min-height: calc(100vh - 60px);
+    @include tablette {
+      width: 70%;
+    }
+
+    @include ordinateur {
+      width: 50%;
+    }
 
     h1{
       font-size: 42px;
@@ -16,8 +49,9 @@ body {
     }
 
     h2{
-      font-size: 35px;
+      font-size: 25px;
       margin-bottom: 12px;
+      text-align: center;
     }
 
     h3{
@@ -26,10 +60,16 @@ body {
       margin-top: 20px;
     }
 
+    hr{
+      border: 1px solid #fff;
+      background: #fff;
+      margin: 20px 0;
+    }
+
     table{
       tr{
         th, td{
-          border: 1px solid #eee;
+          //border: 1px solid #eee;
           min-width: 100px;
           padding: 5px;
         }
@@ -37,9 +77,10 @@ body {
     }
 
     form{
-      border: 1px solid #eee;
+      //border: 1px solid #eee;
       border-radius: 15px;
       width: 100%;
+      padding: 5px;
 
       label{
         margin-bottom: 5px;
@@ -59,14 +100,72 @@ body {
     }
 
     .btn{
-      width: 100px;
+      //width: 100px;
       height: 40px;
       border-radius: 5px;
-      border: 1px solid darkgreen;
+      width: 100%;
+      font-size: 18px;
+      display: block;
+      text-align: center;
+      line-height: 40px;
 
       &.btn-success{
         color: #fff;
-        background: green;
+        background: #B3C38D;
+        border: 1px solid darkgreen;
+      }
+
+      &.btn-warning{
+        color: #fff;
+        background: #8E9190;
+        border: 1px solid dimgrey;
+        margin-top: 15px;
+      }
+
+    }
+
+    div#partyList{
+      h2{
+        margin-bottom: 20px;
+      }
+      ul{
+        li{
+          margin-bottom: 5px;
+          a{
+            color: #fff;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+
+    p#by{
+      text-align: center;
+      margin-top: -8px;
+    }
+
+    i{
+      color: #fff;
+    }
+
+    div#partagez{
+      div#shareCopy{
+        input{
+          width: 200px;
+          height: 40px;
+          padding: 5px;
+          border-radius: 5px 0 0 5px;
+          border: 0;
+        }
+
+        button{
+          height: 40px;
+          padding: 5px;
+          border-radius: 0 5px 5px 0;
+          border: 0;
+        }
+
+        margin-bottom: 15px;
       }
     }
   }

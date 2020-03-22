@@ -1,3 +1,4 @@
+include ./partials/head.pug
 include ./partials/header.pug
 script.
     party = !{JSON.stringify(party)}
@@ -6,43 +7,41 @@ script.
     let dateString = `${dateTest.getFullYear()}${dateTest.getMonth() + 1}${dateTest.getDate()}`
     console.log(dateString);
 
-body
-    div.container
-        h1 Qui prend quoi ?
-
-        hr
-
-        h2= party.name
-        p Créé par #{party.author}
+div.container
+    h2= party.name
+    p#by par #{party.author}
 
 
-        h3 Liste des éléments
-        table
-            thead
-            tbody
-                each item in party.items
-                    tr
-                        td #{item.name} - #{item.user}
-                        td
-                            a(href=`/party/${party._id}/element/${item._id}/delete`)
-                                i.fas.fa-trash
+    h3 Liste des éléments
+    table
+        thead
+        tbody
+            each item in party.items
+                tr
+                    td #{item.name} - #{item.user}
+                    td
+                        a(href=`/party/${party._id}/element/${item._id}/delete`)
+                            i.fas.fa-trash
 
-        h3 Ajouter un élément
-        form(method="post" action=`${postRoute}`)
-            div
-                label(for="name") Nom de l'élément
-                input(name="name" id="name" required placeholder="Bière")
-
-                input(name="user" id="user" required value="Romain" hidden=true)
-                button.btn.btn-success(type="submit") Ajouter
-
-        hr
+    h3 Ajouter un élément
+    form(method="post" action=`${postRoute}`)
         div
-            label(for="url") Partagez l'événement
-            br
+            label(for="name") Nom de l'élément
+            input(name="name" id="name" required placeholder="Bière")
+
+            input(name="user" id="user" required value="Romain" hidden=true)
+            button.btn.btn-success(type="submit") Ajouter
+
+    hr
+    div#partagez
+        label(for="url")
+            h2 Partagez l'événement
+        br
+        div#shareCopy
             input(id="url" value=`${url}` data-clipboard=`${url}` data-share-url=`${url}` data-share-title=`${party.name}` data-share-text=`${party.author} vous invite a rejoindre l'évènement ${party.name}`)
 
-        div
-            a.btn.btn-success(href=`https://www.google.com/calendar/render?action=TEMPLATE&text=${party.name}&details=Qui%20prend%20Quoi?&date=${date}T000000Z`) Ajouter au calendrier
+    div
+        a.btn.btn-success(target="_blank" href=`https://www.google.com/calendar/render?action=TEMPLATE&text=${party.name}&details=Qui%20prend%20Quoi?&date=${date}T000000Z`) Ajouter au calendrier
 
-        div.btn.btn-success#push Envoyer une notification
+    a.btn.btn-warning(href="/") Retour à l'écran d'accueil
+    //div.btn.btn-success#push Envoyer une notification
